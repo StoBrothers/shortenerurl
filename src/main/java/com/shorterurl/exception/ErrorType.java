@@ -2,9 +2,9 @@ package com.shorterurl.exception;
 
 /**
  * Enum of type error.
- * 
+ *
  * @author Sergey Stotskiy
- * 
+ *
  */
 public enum ErrorType {
     UI("Client error"), SERVER("Serever error"), DB("DB error");

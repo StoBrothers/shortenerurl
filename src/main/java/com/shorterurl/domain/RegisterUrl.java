@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
+ * Entity included full and generated short url link with redirect status.
  * 
  * @author Sergey Stotskiy
  *
@@ -33,14 +34,10 @@ public class RegisterUrl {
     @Column(nullable = false)
     private Integer redirectType;
 
-    @Column(nullable = false)
-    private Integer countRedirects;
-
     public RegisterUrl(String fullUrl, String shortUrl, Integer redirectType) {
         this.fullUrl = fullUrl;
         this.shortUrl = shortUrl;
         this.redirectType = redirectType;
-        this.countRedirects = 0;
     }
 
     public long getId() {
@@ -74,17 +71,4 @@ public class RegisterUrl {
     public void setRedirectType(Integer redirectType) {
         this.redirectType = redirectType;
     }
-
-    public Integer getCountRedirects() {
-        return countRedirects;
-    }
-
-    public void setCountRedirects(Integer countRedirects) {
-        this.countRedirects = countRedirects;
-    }
-
-    public int incCountRedirects() {
-        return ++countRedirects;
-    }
-
 }

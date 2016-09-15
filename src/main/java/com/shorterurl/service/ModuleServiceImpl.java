@@ -11,8 +11,8 @@ import com.shorterurl.domain.ModuleRepository;
 
 /**
  * Module service and implementation.
- * 
- * @author Sergey Stotskiy 
+ *
+ * @author Sergey Stotskiy
  *
  */
 @Service("moduleService")

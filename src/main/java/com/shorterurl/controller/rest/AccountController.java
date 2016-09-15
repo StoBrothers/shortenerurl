@@ -18,7 +18,7 @@ import com.shorterurl.service.AccountService;
  */
 @RestController
 public class AccountController {
-    
+
     @Autowired
     private AccountService accountService;
 

@@ -10,7 +10,7 @@ import com.shorterurl.security.Role;
 
 /**
  * User repository.
- * 
+ *
  * @author Sergey Stotskiy
  */
 public interface AccountRepository extends JpaRepository<Account, Long> {

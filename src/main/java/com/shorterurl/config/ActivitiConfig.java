@@ -18,7 +18,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 /**
  * Configure Spring.
- * 
+ *
  * @author Sergey Stotskiy
  */
 @Configuration

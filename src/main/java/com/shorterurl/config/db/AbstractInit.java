@@ -11,7 +11,7 @@ import com.shorterurl.service.ModuleService;
 
 /**
  * Abstract class for load data.
- * 
+ *
  * @author Sergey Stotskiy
  */
 public abstract class AbstractInit {

@@ -11,7 +11,7 @@ import com.google.common.collect.Sets;
 
 /**
  * All roles in project with permissions.
- * 
+ *
  * @author Sergey Stotskiy
  */
 public enum Role {
@@ -20,12 +20,7 @@ public enum Role {
     ADMIN("Admin", "Admin", Arrays.asList(
         Permission.VOTES_INFO,
         Permission.VOTES_CREATE,
-        Permission.CABINET_ADMIN,
-        Permission.DISHE_CREATE,
-        Permission.DISHE_VIEW,
-        Permission.DISHE_UPDATE,
-        Permission.DISHE_DELETE,
-        Permission.RESTAURANT_VIEW
+        Permission.CABINET_ADMIN
 
     )),
 

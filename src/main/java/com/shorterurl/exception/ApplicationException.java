@@ -4,8 +4,8 @@ import com.shorterurl.util.StringFormatter;
 
 /**
  * Custom exception, wrapper for Runtime exception.
- * 
- * @author Sergey Stotskiy  
+ *
+ * @author Sergey Stotskiy
  */
 @SuppressWarnings("serial")
 public class ApplicationException extends RuntimeException {

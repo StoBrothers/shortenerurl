@@ -7,7 +7,7 @@ import com.shorterurl.domain.Module;
 
 /**
  * Service for work with system modules.
- * 
+ *
  * @author Sergey Stotskiy
  *
  */
@@ -15,18 +15,18 @@ public interface ModuleService {
 
     /**
      * Looking module by id
-     * 
-     * 
+     *
+     *
      * @param id
      *            identificator
-     * 
+     *
      * @return Module
      */
     Optional<Module> getModuleById(long id);
 
     /**
      * Looking module by name
-     * 
+     *
      * @param version
      *            number of version
      * @param name
@@ -44,7 +44,7 @@ public interface ModuleService {
 
     /**
      * Created new module by version and name
-     * 
+     *
      * @param name
      *            name
      * @return new module

@@ -9,7 +9,7 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
 /**
  * Web part configuration.
- * 
+ *
  * @author Sergey Stotskiy
  */
 @Configuration

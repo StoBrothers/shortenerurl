@@ -3,9 +3,8 @@ package com.shorterurl.util;
 import org.slf4j.helpers.MessageFormatter;
 
 /**
- * Custom string formatter.
- * This class use in ApplicationException.
- *   
+ * Custom string formatter. This class use in ApplicationException.
+ * 
  * @author Sergey Stotskiy
  */
 public class StringFormatter {

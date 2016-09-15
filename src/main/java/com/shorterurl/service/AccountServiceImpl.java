@@ -13,30 +13,27 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import com.shorterurl.controller.rest.AccountController;
 import com.shorterurl.domain.Account;
 import com.shorterurl.domain.AccountParameters;
 import com.shorterurl.domain.AccountRepository;
 
 /**
  * Service for work with user entity.
- * 
- *  @author Sergey Stotskiy
+ *
+ * @author Sergey Stotskiy
  */
 @Service("userService")
 public class AccountServiceImpl implements AccountService {
 
-    private static final Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
-    
-    
+    private static final Logger logger = LoggerFactory
+        .getLogger(AccountServiceImpl.class);
+
     private static final String ACCOUNT_EXISTED = "Account with that ID: #  already exists";
 
     private static final String ACCOUNT_OPENED = "Your account is opened";
 
     private static final String PATTERN = "#";
-
 
     private final AccountRepository accountRepository;
 
@@ -75,9 +72,9 @@ public class AccountServiceImpl implements AccountService {
         return accountRepository.findAllByAdminRulesIsTrue();
     }
 
-
+    @Override
     public AccountParameters openAccount(AccountParameters account) {
-        
+
         if (account.getAccountId() == null) {// check AccountId
             logger.error("AccountId is null");
             return account;
@@ -89,7 +86,7 @@ public class AccountServiceImpl implements AccountService {
             account.setSuccess(String.valueOf(false));
             account.setDescription(
                 StringUtils.replace(ACCOUNT_EXISTED, PATTERN, account.getAccountId()));
-           account.setAccountId(null); 
+            account.setAccountId(null);
             return account;
         }
 
@@ -117,7 +114,4 @@ public class AccountServiceImpl implements AccountService {
         return hashPassword;
     }
 
-    
-    
-    
 }

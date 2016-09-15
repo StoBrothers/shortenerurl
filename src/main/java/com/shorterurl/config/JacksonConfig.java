@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 /**
  * Jackson configure.
- * 
+ *
  * @author Sergey Stotskiy
  */
 @Configuration

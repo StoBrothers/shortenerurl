@@ -18,7 +18,7 @@ import com.shorterurl.domain.AccountRepository;
 public class AccountInit extends AbstractInit {
 
     /**
-     *  password:123
+     * password:123
      */
     private static final String PASS_TEST = "$2a$10$lGQ0FEvIVA/6mJor8rYK.eOoHmvi9lp84lnbMV1098cgL4agQNM/i";
 
@@ -40,7 +40,7 @@ public class AccountInit extends AbstractInit {
      *
      * @param logonName
      * @param passwordHash
-     * 
+     *
      */
     private void create(String logonName, String passwordHash) {
         Account account = new Account();

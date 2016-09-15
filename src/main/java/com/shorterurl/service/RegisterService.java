@@ -6,13 +6,13 @@ import com.shorterurl.domain.RegisterUrl;
 
 public interface RegisterService {
 
-    RegisterUrl registerUrl (String fullUrl, Integer redirectType);
+    RegisterUrl registerUrl(String fullUrl, Integer redirectType);
 
-    Optional<RegisterUrl> findByShortlUrl (String shortUrl);
+    Optional<RegisterUrl> findByShortlUrl(String shortUrl);
 
     Optional<RegisterUrl> findByFullUrl(String fullUrl);
 
     Optional<RegisterUrl> save(RegisterUrl register);
-    
+
     String getHeaderUrl();
 }

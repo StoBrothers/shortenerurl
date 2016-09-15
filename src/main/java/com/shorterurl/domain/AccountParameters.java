@@ -7,14 +7,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @SuppressWarnings("serial")
 public class AccountParameters implements Serializable {
-    
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String accountId;
-    
+
     private String success;
-    
+
     private String description;
-    
+
     private String generatedPassword;
 
     @JsonProperty("password")
@@ -47,7 +47,7 @@ public class AccountParameters implements Serializable {
     public String getAccountId() {
         return accountId;
     }
-    
+
     @JsonProperty("AccountId")
     public void setAccountId(String accountId) {
         this.accountId = accountId;

@@ -1,11 +1,11 @@
 package com.shorterurl.exception;
 
 /**
+ *
+ * Error messages.
  * 
- * Error messages. 
- *  
  * @author Sergey Stotskiy
- * 
+ *
  */
 public enum ErrorMessage {
     // @formatter:off

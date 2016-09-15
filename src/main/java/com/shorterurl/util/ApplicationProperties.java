@@ -11,7 +11,7 @@ import com.shorterurl.ShorterUrlApplication;
 
 /**
  * Application settings component.
- * 
+ *
  * @author Sergey Stotskiy
  *
  */
@@ -24,11 +24,9 @@ public class ApplicationProperties {
     private static String activeProfiles;
     private static String buildVersion;
     private static String buildDate;
-    
+
     private static int plusHour;
     private static int minusHour;
-    
-    
 
     private ApplicationProperties() {
     }
@@ -64,16 +62,16 @@ public class ApplicationProperties {
             .format(zdt.plusSeconds(zdt.getOffset().getTotalSeconds()));
     }
 
-	@Value("${shorterurl.votetime.plushour}")
-	private void setPlusHour(int plushour) {
-		ApplicationProperties.plusHour = plushour;
-	}
+    @Value("${shorterurl.votetime.plushour}")
+    private void setPlusHour(int plushour) {
+        ApplicationProperties.plusHour = plushour;
+    }
 
-	@Value("${shorterurl.votetime.minushour}")
-	private void setMinusHour(int minushour) {
-		ApplicationProperties.minusHour = minushour;
-	}
-	
+    @Value("${shorterurl.votetime.minushour}")
+    private void setMinusHour(int minushour) {
+        ApplicationProperties.minusHour = minushour;
+    }
+
     public static boolean isTestserver() {
         return testServer;
     }
@@ -106,12 +104,12 @@ public class ApplicationProperties {
         return buildDate;
     }
 
-	public static int getPlusHour() {
-		return plusHour;
-	}
+    public static int getPlusHour() {
+        return plusHour;
+    }
 
-	public static int getMinusHour() {
-		return minusHour;
-	}
+    public static int getMinusHour() {
+        return minusHour;
+    }
 
 }

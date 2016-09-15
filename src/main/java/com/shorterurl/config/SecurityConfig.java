@@ -15,12 +15,11 @@ import com.shorterurl.security.Permission;
 
 /**
  * Security configure.
- * 
- * 
+ *
+ *
  * @author Sergey Stotskiy
- * 
+ *
  */
-
 
 @Configuration
 @EnableWebSecurity
@@ -40,11 +39,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // @formatter:off
         http
-            .csrf().disable()   // disable for testing only 
+            .csrf().disable()   // disable for testing only
             .authorizeRequests()
                 .antMatchers("/css/**", "/js/**", "/images/**", "/webjars/**", "/test", "/help")
                     .permitAll()
                 .antMatchers("/register").permitAll()
+                .antMatchers("/shorturl/**").permitAll()
+                .antMatchers("/statistic/**").permitAll()
                 .antMatchers("/user/**")
                     .hasAuthority(Permission.CABINET_ADMIN.name())
                 .antMatchers("/references/admins/")
@@ -53,11 +54,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .hasAuthority(Permission.EDIT_SETTINGS.name())
                 .antMatchers("/references/")
                     .hasAuthority(Permission.REF_MENU.name())
-                .and() 
-                    .authorizeRequests()
-                    .antMatchers("/shorturl/**") // use short links for anonymous access
-                    .anonymous()
-                .and() 
+//                .and()
+//                    .authorizeRequests()
+//                    .antMatchers("/statistic/**") // use short links for anonymous access
+//                    .anonymous()
+                .and()
                     .authorizeRequests()
                     .antMatchers("/account/") // registration for anonymous access
                     .anonymous()

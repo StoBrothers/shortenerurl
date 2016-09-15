@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.shorterurl.domain.RegisterUrl;
 import com.shorterurl.domain.RegisterUrlRepository;
+import com.shorterurl.service.RegisterService;
 
 /**
  * Initialization and registration short url (shorturl) for www.ya.ru.
@@ -13,25 +14,33 @@ import com.shorterurl.domain.RegisterUrlRepository;
  * @author Sergey Stotskiy
  *
  */
-@Component("restaurants")
+@Component("registerurl")
 @DependsOn({ "applicationProperties" })
 public class RegisterUrlInit extends AbstractInit {
 
     @Autowired
     RegisterUrlRepository<RegisterUrl> registerRepository;
 
+    @Autowired
+    RegisterService registerService;
+
     @Override
     protected void init() {
-          create("shorturl");
+        create("www.ya.ru", "shorturl_1", 301);
+        create("www.index.ru", "shortur_2", 301);
+        create("www.mail.ru", "shortur_3", 302);
     }
 
     /**
-     * Create one restaurant
+     * Create one RegisterUrl
      *
-     * @param restaurantName
+     * @param fullUrl
+     * @param shortUrl
+     * @param redirectType
      */
-    private void create(String restaurantName) {
-        RegisterUrl restaurant = new RegisterUrl("www.ya.ru", restaurantName, 301);
-        registerRepository.save(restaurant);
+    private void create(String fullUrl, String shortUrl, int redirectType) {
+        RegisterUrl registeredUrl = registerService.registerUrl(fullUrl, redirectType);
+        registeredUrl.setShortUrl(shortUrl);
+        registerRepository.save(registeredUrl); // update short url link
     }
 }

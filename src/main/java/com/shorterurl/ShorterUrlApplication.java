@@ -8,7 +8,7 @@ import org.springframework.core.env.SimpleCommandLinePropertySource;
 
 /**
  * Spring Boot Shortener Url Application.
- * 
+ *
  * @author Sergey Stotskiy
  */
 @SpringBootApplication

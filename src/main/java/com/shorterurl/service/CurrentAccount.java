@@ -8,9 +8,9 @@ import com.shorterurl.domain.Account;
 import com.shorterurl.security.Role;
 
 /**
- *  Wrapper for authenticated User.
- *  
- *  @author Sergey Stotskiy
+ * Wrapper for authenticated User.
+ * 
+ * @author Sergey Stotskiy
  */
 @SuppressWarnings("serial")
 public class CurrentAccount extends org.springframework.security.core.userdetails.User {
@@ -19,9 +19,9 @@ public class CurrentAccount extends org.springframework.security.core.userdetail
 
     public CurrentAccount(Account account) {
         super(account.getLogonName(), account.getPasswordHash(), true, true, true, true,
-            AuthorityUtils.createAuthorityList(
-                account.getRoles().stream().flatMap(role -> role.getPermissions().stream())
-                    .map(permission -> permission.toString()).toArray(String[]::new)));
+            AuthorityUtils.createAuthorityList(account.getRoles().stream()
+                .flatMap(role -> role.getPermissions().stream())
+                .map(permission -> permission.toString()).toArray(String[]::new)));
         this.account = account;
     }
 
@@ -35,6 +35,7 @@ public class CurrentAccount extends org.springframework.security.core.userdetail
 
     /**
      * Get logon name.
+     * 
      * @return
      * @see Account#getLogonName()
      */
@@ -44,6 +45,7 @@ public class CurrentAccount extends org.springframework.security.core.userdetail
 
     /**
      * Get roles.
+     * 
      * @return
      */
     public Set<Role> getRoles() {

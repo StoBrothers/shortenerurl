@@ -16,7 +16,7 @@ import com.shorterurl.exception.Error;
 
 /**
  * Utility for work with dates.
- * 
+ *
  * @author Sergey Stotskiy
  */
 @Component
@@ -33,21 +33,25 @@ public class DateUtil {
 
     /**
      * Get current year.
+     * 
      * @return
      */
     public static int getCurrentYear() {
         return LocalDateTime.now().getYear();
     }
-    
+
     /**
      * Get current year.
+     * 
      * @return
      */
     public static int getCurrentDate() {
         return LocalDateTime.now().minusDays(1).getYear();
     }
+
     /**
-     * Parse date over pattern. 
+     * Parse date over pattern.
+     * 
      * @param pattern
      * @param date
      * @return
@@ -60,25 +64,30 @@ public class DateUtil {
             throw new ApplicationException(Error.DATE_PARSE, e, date, pattern);
         }
     }
+
     /**
-     * Get date full format pattern. 
+     * Get date full format pattern.
+     * 
      * @return
      */
     public String getFullFormat() {
         return DATE_FULL_FORMAT;
     }
-    
+
     /**
-     * Get date short format pattern. 
+     * Get date short format pattern.
+     * 
      * @return
      */
     public String getShortDateFormat() {
         return DATE_SIMPLE_FORMAT;
     }
-    
+
     /**
      * Parse string date to date.
-     * @param date date string 
+     * 
+     * @param date
+     *            date string
      * @return
      */
     public static Date parseAsShortDate(String date) {
@@ -88,6 +97,7 @@ public class DateUtil {
 
     /**
      * Get full date format.
+     * 
      * @return
      */
     public String getFullDateFormatWithoutSeconds() {

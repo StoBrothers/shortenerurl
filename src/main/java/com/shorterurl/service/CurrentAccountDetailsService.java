@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import com.shorterurl.domain.Account;
 
 /**
- *  Authentication account.
- * 
- *  @author Sergey Stotskiy
+ * Authentication account.
+ *
+ * @author Sergey Stotskiy
  */
 @Service
 public class CurrentAccountDetailsService implements UserDetailsService {

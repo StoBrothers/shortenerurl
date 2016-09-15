@@ -18,32 +18,35 @@ import com.shorterurl.service.RegisterService;
 
 /**
  * New short url registration.
- *  
+ * 
  * @author Sergey Stotskiy
  *
  */
 @RestController
 public class RegisterUrlController {
-    
+
     @Autowired
-    RegisterService  registerService;
+    RegisterService registerService;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = {
-    "application/json" }, produces = { "application/json" })
+        "application/json" }, produces = { "application/json" })
     @Transactional
-    public Object registration(@RequestBody RegisterParameter parameter, HttpServletRequest request) {
+    public Object registration(@RequestBody RegisterParameter parameter,
+        HttpServletRequest request) {
 
-        RegisterUrl registeredUrl = registerService.registerUrl(parameter.getUrl(),  parameter.getRedirectType());
+        RegisterUrl registeredUrl = registerService.registerUrl(parameter.getUrl(),
+            parameter.getRedirectType());
         if (registeredUrl == null) {
             return "Errors, please to see log";
         }
-        
+
         Map<String, String> response = new HashMap<>();
-       
-        response.put("shortUrl", registerService.getHeaderUrl() + registeredUrl.getShortUrl());
-       
+        // request.get
+
+        response.put("shortUrl",
+            registerService.getHeaderUrl() + registeredUrl.getShortUrl());
+
         return response;
     }
-    
-    
+
 }

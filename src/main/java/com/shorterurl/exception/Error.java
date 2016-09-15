@@ -2,9 +2,9 @@ package com.shorterurl.exception;
 
 /**
  * Error with code of error and message and type.
- * 
+ *
  * @author Sergey Stotskiy
- * 
+ *
  */
 public enum Error {
     DATE_PARSE(1, ErrorMessage.DATE_PARSE_MESSAGE, ErrorType.SERVER),

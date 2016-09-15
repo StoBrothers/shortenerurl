@@ -15,7 +15,7 @@ import com.shorterurl.security.Role;
 
 /**
  * User entity.
- * 
+ *
  * @author Sergey Stotskiy
  *
  */

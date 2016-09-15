@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Module repository.
- * 
+ *
  * @author Sergey Stotskiy
  *
  */

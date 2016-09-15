@@ -11,8 +11,8 @@ import com.shorterurl.domain.AccountParameters;
 
 /**
  * Service for work with account entity.
- * 
- *  @author Sergey Stotskiy
+ *
+ * @author Sergey Stotskiy
  */
 public interface AccountService {
 
@@ -27,7 +27,7 @@ public interface AccountService {
     Page<Account> getAllAccounts(Pageable pageable);
 
     Collection<Account> getAllAdminAccounts();
-    
-    AccountParameters openAccount(AccountParameters account); 
+
+    AccountParameters openAccount(AccountParameters account);
 
 }

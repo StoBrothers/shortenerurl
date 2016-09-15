@@ -5,9 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
- * Transformation date to String.
- * This class used DateUtil.
- * 
+ * Transformation date to String. This class used DateUtil.
+ *
  * @author Sergey Stotskiy
  */
 public class FormatterUtils {
@@ -38,7 +37,7 @@ public class FormatterUtils {
 
     /**
      * Get transformed Date to String.
-     * 
+     *
      * @param date
      * @param format
      * @return transformed Date to String.
@@ -54,7 +53,7 @@ public class FormatterUtils {
 
     /**
      * Get transformed Date to String.
-     * 
+     *
      * @param date
      * @return - date with format {@link DateUtil#DATE_FULL_FORMAT_FOR_FILE_NAME}
      */

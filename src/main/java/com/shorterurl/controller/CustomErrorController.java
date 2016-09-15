@@ -31,7 +31,7 @@ import com.shorterurl.service.CurrentAccount;
 
 /**
  * Controller for show detail error.
- * 
+ *
  * @author Sergey Stotskiy
  */
 @Controller
