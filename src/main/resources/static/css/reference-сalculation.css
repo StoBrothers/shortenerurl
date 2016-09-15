@@ -1,0 +1,135 @@
+#referenceCalculation {
+
+}
+
+#referenceCalculation.fullscreen .ref-calc-table {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: white;
+    z-index: 50;
+}
+
+.buttons-change-view-ref-calc {
+    min-height: 22px;
+    margin-bottom: 20px;
+}
+
+.resizeBtn, .fullscreenBtn {
+    margin-left: 5px;
+}
+
+.fullscreenBtn.toFull .toSmallText,
+.fullscreenBtn:not(.toFull) .toFullText {
+    display: none;
+}
+
+#placeTable {
+    margin-bottom: 20px;
+}
+
+.nameTable {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.tableReference thead tr th {
+    text-align: center;
+    word-break: break-word;
+}
+
+.tableReference tbody tr td:not(.editValue):not(.selectable) {
+
+}
+
+.tableReference tbody tr.addBtnRow td,
+.tableReference tbody tr td.deleteRow {
+    text-align: center;
+}
+
+.tableReference tbody tr td.editValue,
+.tableReference tbody tr td.selectable {
+    cursor: pointer;
+}
+
+.tableReference tbody tr td.deleteRow {
+    cursor: pointer;
+    color: red;
+}
+
+.tableReference tbody tr.title_partRow td {
+    text-align: left;
+    font-weight: bold;
+    padding: 2px 4px;
+}
+
+.showVal {
+    min-height: 24px;
+    line-height: 24px;
+}
+
+.list-rates-header,
+.list-rates {
+    width: 250px;
+    font-size: 12px;
+}
+
+.list-rates {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.list-rates .rate {
+    cursor: pointer;
+    border-bottom: 1px solid lightgray;
+    padding: 2px 6px 2px 0px;
+}
+
+.list-rates .rate:last-child {
+    border-bottom: none;
+}
+
+.list-rates .rate:hover {
+    color: #262626;
+    background-color: #f5f5f5;
+}
+
+.list-rates-header .rate-name,
+.list-rates-header .rate-val {
+    text-align: center;
+}
+
+.list-rates-header .rate-name,
+.list-rates .rate-name {
+    width: 70%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.list-rates-header .rate-val,
+.list-rates .rate-val {
+    width: 30%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.list-rates .rate-val {
+    font-weight: bold;
+    text-align: right;
+}
+
+.tmpInput {
+    outline: none;
+    border: 1px dashed gray;
+    width: 100%;
+}
+
+@media print {
+    #referenceCalculation {
+
+    }
+}

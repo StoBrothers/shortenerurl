@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="fragments/headTag :: headTag"/>
+
+<body class="page-home noMarginNavbar">
+<div class="wow fadeInDown" data-wow-delay="0.1s" data-wow-duration="0.5s">
+	<div th:include="fragments/bodyNav :: bodyNav">
+	</div>
+</div>
+
+<div id="sections" sec:authorize="isAuthenticated()">
+	<th:block th:with="userIsAdmin=(${currentUser.getRoles().contains(T(com.shorterurl.security.Role).ADMIN)})">
+    <a th:href="@{/map/}" sec:authorize-url="/map/"
+	   class="wow fadeInLeft section map" data-wow-delay="0.3s">
+		Monitoring<br/>and Manage</a><a
+    	th:href="@{/economy/}" sec:authorize-url="/economy/"
+		class="wow fadeInLeft section economy" data-wow-delay="0.1s">
+	Economics</a><a
+    	th:href="@{/requests/}" sec:authorize-url="/requests/"
+		class="wow fadeInRight section documents" data-wow-delay="0.1s">
+	Documents</a><a
+    	th:href="@{/references/}" sec:authorize-url="/references/"
+		th:class="${userIsAdmin} ? 'wow fadeIn section references' : 'wow fadeInRight section references'"
+		th:attr="data-wow-delay=${userIsAdmin} ? '0.1s' : '0.3s'">
+	Dictionary</a>
+	</th:block>
+</div>	
+
+</body>
+</html>

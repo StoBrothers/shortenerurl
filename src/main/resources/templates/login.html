@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="fragments/headTag :: headTag"/>
+<body class="login">
+<script type="text/javascript">
+    $(function () {
+//        new CanvasBG.init();
+
+        $('#remember').click(function () {
+            if ($(this).prop('checked')) {
+                $('#login-form').attr('autocomplete', 'on');
+            } else {
+                $('#login-form').attr('autocomplete', 'off');
+            }
+        });
+
+        $('#login-submit').click(function () {
+            if ($(this).hasClass('disabled')) return false;
+        });
+
+        $('#login-form').submit(function () {
+            $('#login-submit').addClass('btn-loading').addClass('disabled');
+        });
+    });
+</script>
+
+<div id="canvas-wrapper">
+    <canvas id="demo-canvas"></canvas>
+</div>
+
+<div class="container">
+    <div th:if="${param.logout} == null" class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-login" id="loginForm">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="title">
+                            Test UI App <br/>
+                            <br/>
+                        </div>
+                        <div id="lockImage"></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form th:if="${currentUser} == null" th:action="@{/login}"
+                                  id="login-form" method="post" role="form" autocomplete="on">
+                                <div th:if="${param.error}" class="alert-message text-danger">
+                                    <i class="fa fa-frown-o"></i> Wrong user name or password
+                                </div>
+                                <div th:if="${param.logout}" class="alert-message text-success">
+                                    <i class="fa fa-smile-o"></i> You succesful exit from system
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" name="logonName" id="logonName" tabindex="1" class="form-control"
+                                           placeholder="User name" required="required" autofocus="autofocus"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" id="password" tabindex="2"
+                                           class="form-control" required="required" placeholder="Password"/>
+                                </div>
+                                <div class="form-group text-center">
+                                    <input type="checkbox" tabindex="3" class="" name="remember-me" id="remember"
+                                           checked="checked"/>
+                                    <label for="remember">Remember me</label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <button type="submit" name="login-submit" id="login-submit" tabindex="4"
+                                                    class="form-control btn btn-login">
+                                                Entered <i class="fa fa-spinner fa-pulse"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <form th:if="${currentUser} != null" th:action="@{/logout}" method="post">
+                                <h4 class="text-center addBottomMargin">
+                                    You are entered as: <strong th:text="${currentUser.user.fullName}" />
+                                </h4>
+                                <button class="btn btn-danger btn-lg center-block exitBtn" type="submit">
+                                    Exit <i class="fa fa-sign-out"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

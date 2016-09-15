@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="fragments/headTag :: headTag">
+
+</head>
+
+<body>
+<div th:include="fragments/bodyNav :: bodyNav"></div>
+
+<div class="container page-company">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>
+                <a href="../companies/0/without-deleted/although-location/all/" class="btn btn-link btn-sm hidden-print"
+                   role="button" sec:authorize="hasRole('COMPANIES_VIEW')">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Dishes</a>
+                <th:block th:text="${dishe.name}"/>
+                <th:block th:text="${dishe.price}"/>
+                <th:block th:text="${dishe.id}"/>
+                <th:block th:text="${dishe.restaurant.name}"/>
+                <th:block th:text="${dishe.workDate.date}"/>
+                <div class="btn-group pull-right hidden-print">
+                    <button class="btn btn-info pull-right dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                        <span class="glyphicon glyphicon-print"></span> Print <span
+                            class="caret"></span>
+                    </button>
+                </div>
+            </h2>
+            <hr/>
+        </div>
+    </div>
+</div>
+</body>
+</html>

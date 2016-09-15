@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html
+        lang="ru"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Test GUI: Private cabinet</title>
+</head>
+
+<body th:fragment="bodyNav">
+
+<th:block th:if="${currentUser} != null">
+    <nav class="navbar navbar-default hidden-print" role="navigation">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <th:block sec:authorize="hasRole('CABINET_APP')">
+                    <a id="icoProfile" class="navbar-brand ico-app" href="/" title="User app"></a>
+                    <a class="navbar-brand titleTextProfile">
+                        <th:block th:text="${currentUser.logonName}"/>
+                    </a>
+                </th:block>
+
+                <th:block sec:authorize="hasRole('CABINET_ADMIN')">
+                    <a id="icoProfile" class="navbar-brand ico-admin" href="/" title="Admin"></a>
+                </th:block>
+            </div>
+
+            <th:block th:if="${currentUser} != null">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Documents <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li sec:authorize-url="/regular-report/"><a th:href="@{/regular-report/}">Regular operations report</a></li>
+                        </ul>
+                    </li>
+
+                    <li sec:authorize-url="/references/">
+                        <a th:href="@{/references/}">Dictionary</a>
+                    </li>
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true"
+                           aria-expanded="false">
+                            <span th:text="${currentUser.user.fullName}"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/user/{userId}(userId=${currentUser.id})}">
+                                <i class="fa fa-user fa-fw"></i>Profile</a>
+                            </li>
+                            <th:block sec:authorize="hasRole('EDIT_SETTINGS')">
+                            </th:block>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <form th:action="@{/logout}" method="post">
+                                    <button class="btn btn-default center-block exitBtn" type="submit">Exit
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </th:block>
+            </div>
+    </nav>
+    <!-- for JS -->
+    <th:block sec:authorize="hasRole('CABINET_APP')">
+        <script type="text/javascript" th:inline="javascript">
+            var user = {
+                type: 'APP',
+                appId: /*[[${currentUser.user.id}]]*/,
+                appExternalId: /*[[${currentUser.user.id}]]*/,
+                appName: /*[[${currentUser.logonName}]]*/,
+                municipality: /*[[${currentUser.user.id}]]*/
+            };
+            Object.defineProperty(user, "type", {writable: false, configurable: false});
+            Object.defineProperty(user, "appId", {writable: false, configurable: false});
+            Object.defineProperty(user, "appExternalId", {writable: false, configurable: false});
+        </script>
+    </th:block>
+
+
+    <th:block sec:authorize="hasRole('CABINET_ADMIN')">
+        <script type="text/javascript" th:inline="javascript">
+            var user = {type: 'ADMIN'};
+            Object.defineProperty(user, "type", {writable: false, configurable: false});
+        </script>
+    </th:block>
+
+    <div th:if="${@applicationProperties.isTestserver()}" class="system-info collapsed">
+        <div class="close-system-info" title="Collapse">
+            <span class="glyphicon glyphicon-remove"></span>
+        </div>
+        <div class="expand-system-info" title="Expand">
+            <span class="glyphicon glyphicon-triangle-bottom"></span>
+        </div>
+        <div class="collapse-system-info" title="Collapse">
+            <span class="glyphicon glyphicon glyphicon-triangle-top"></span>
+        </div>
+        <div><strong>Version:</strong>
+            <th:block th:text="${@applicationProperties.getBuildVersion()}"/>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

@@ -1,0 +1,337 @@
+#sidebar {
+    top: 62px;
+}
+
+#sidebar .tab-content {
+    margin-top: 20px;
+}
+
+#tabHome .list-districts,
+#tabHome .list-apps {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#map {
+    background-color: rgb(237, 237, 237);
+    width: 100%;
+    height: calc(100vh - 52px);
+}
+
+#miniMap {
+    background-color: rgb(237, 237, 237);
+    width: 100%;
+    height: 500px;
+}
+
+#map .mapError,
+#miniMap .mapError {
+    text-align: center;
+    font-size: 1.5em;
+    padding-top: 45vh;
+}
+
+#miniMap .mapError {
+    padding-top: 250px;
+}
+
+#miniMap.blocked {
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+}
+
+#miniMapBloc {
+    height: 500px;
+    width: calc(100% - 30px);
+    position: absolute;
+    top: 0;
+    left: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+#miniMapBloc .textBlock {
+    text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 240px;
+    color: white;
+}
+
+.color-item {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: relative;
+    top: 2px;
+}
+
+.leaflet-container.editing {
+    cursor: crosshair;
+}
+
+a.findMe, a.timeMachine {
+    background-position: center;
+    background-size: 95%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+a.findMe {
+    background-image: url('../images/location.png');
+}
+
+a.timeMachine {
+    background-image: url('../images/time-back.png');
+}
+
+.leaflet-control.delete-control {
+    display: none;
+}
+
+.leaflet-bar.enabled a {
+    background-color: #f0ad4e;
+}
+
+.leaflet-bar a.deleteOutline {
+    font-size: 150%;
+    color: red;
+}
+
+.areaIcoAndTitle {
+    min-height: 35px;
+    width: 225px;
+}
+
+.icoAppCompany {
+    border: none;
+    float: right;
+    width: 35px;
+    height: 35px;
+}
+
+.icoAppCompany.big {
+    float: none;
+    width: 150px;
+    height: 150px;
+}
+
+.titleAPP {
+    font-weight: bold;
+    font-size: 14px;
+    width: 190px;
+}
+
+.districtAPP {
+
+}
+
+.changeBasemap {
+    background-color: rgb(255, 255, 255);
+    padding: 2px;
+}
+
+.changeBasemap .toggleMap {
+    cursor: pointer;
+    height: 75px;
+}
+
+.changeBasemap .imgMap {
+    border: none;
+    border-radius: 3px;
+}
+
+.changeBasemap .typeMap {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    max-width: 75px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 16px;
+    position: relative;
+    top: -16px;
+    font-size: 11px;
+}
+
+#tabSearch .settings-search {
+    margin-bottom: 10px;
+}
+
+#tabSearch .result {
+    font-size: 1.1em;
+}
+
+#tabSearch .result > a {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+    padding: 5px 0 5px 20px;
+    border-bottom: 1px solid #ccc;
+    background-image: url('../images/point_small.png');
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+#tabSearch .result > a:last-child {
+    border-bottom: none;
+}
+
+#sidebar .note {
+    color: gray;
+    font-style: oblique;
+    text-align: center;
+    margin: 10px 0;
+}
+
+#sidebar .icoLayers {
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+
+.help-block {
+    display: none;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 5px 0px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    border-radius: 4px;
+    position: absolute;
+    top: 55px;
+    left: 50px;
+    width: 30vw;
+    padding: 10px;
+    text-align: left;
+    z-index: 450;
+}
+
+.overlay.loader {
+    display: block;
+}
+
+#tabSettings .form-group-sc {
+    margin-top: 10px;
+}
+
+.overlay.loaderLayers {
+    cursor: progress;
+}
+
+.timeMachine-controls {
+    display: none;
+    background-color: rgba(255, 255, 255, .95);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+    border-radius: 4px;
+}
+
+#timeMachineLayers {
+    position: fixed;
+    right: 15px;
+    top: 65px;
+    width: 300px;
+    padding: 10px;
+    max-height: calc(65vh - 25px);
+    overflow-y: auto;
+}
+
+#timeMachineLayers-2 {
+    position: fixed;
+    right: 330px;
+    top: 65px;
+    width: 300px;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.timeMachine-controls input {
+    margin: 0;
+    position: relative;
+    top: 2px;
+}
+
+.timeMachine-controls label {
+    display: inline;
+    font-weight: normal;
+    margin-left: 3px;
+}
+
+.timeMachine-controls input.loading + label::before {
+    content: " ";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-image: url('../images/loader.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 3px;
+}
+
+#timeMachineLayers .item-legend {
+    margin-top: 5px;
+}
+
+#timeMachineLayers .color-legend {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+#timeMachineLayers .text-legend {
+    display: inline-block;
+    width: calc(100% - 23px);
+    vertical-align: top;
+    margin-left: 3px;
+}
+
+.timeMachine-controls hr {
+    margin: 5px 0;
+}
+
+#timeMachine {
+    position: fixed;
+    left: 5%;
+    bottom: 5%;
+    width: 90%;
+    height: 90px;
+}
+
+#timeMachineDiv {
+    margin: 35px 10px 0;
+}
+
+.dateTimeMachine {
+    text-align: center;
+    margin-top: 35px;
+    font-size: 1.25em;
+}
+
+.collapse-btn {
+    float: right;
+    cursor: pointer;
+    transform: rotate(-45deg);
+    transition: 0.25s;
+    color: lightgray;
+}
+
+.collapse-btn:hover {
+    color: black;
+}
+
+.collapse-btn.collapsed {
+    transform: rotate(135deg);
+}
+
+.collapse-element {
+    transition: 0.25s;
+    overflow: hidden;
+}
+
+.collapse-element.collapsed {
+    height: 0;
+}

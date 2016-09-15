@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/headTag :: headTag">
+</head>
+<body>
+<div class="container page-error">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Wow! I am sorry....</h1>
+
+            <div class="jumbotron">
+                <span class="icoBug">
+                    <i class="fa fa-bug"></i>
+                </span>
+
+                <p class="lead">
+                    Error issued in system.<br/>
+                    Please call to technical support.<br/>
+                    <a href="callto:+7(000)000-00-00">+7 (000) 000-00-00</a>
+                    <a href="mailto:support@gos.ru">support@shorterurl.ru</a>
+                </p>
+                <a href="/" class="btn btn-primary btn-lg">Return to private cabinet.</a>
+
+                <form th:action="@{/logout}" method="post">
+                    <button class="btn btn-danger btn-lg" type="submit">
+                        Exist from system
+                    </button>
+                </form>
+            </div>
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Page error</label>
+
+                    <div class="col-sm-9">
+                        <p class="form-control-static" th:text="${url}"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Error message</label>
+
+                    <div class="col-sm-9">
+                        <p class="form-control-static text-danger"
+                           th:if="${exception != null and exception instanceof T(java.lang.Throwable)}">
+                            <strong th:text="${exception.message}"/>
+                        </p>
+                    </div>
+                </div>
+
+                <th:block th:if="${currentUser != null}">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">User</label>
+
+                        <div class="col-sm-9">
+                            <p class="form-control-static" th:text="${currentUser.logonName}"/>
+                        </div>
+                    </div>
+                </th:block>
+
+                <th:block th:if="${timestamp}">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Time</label>
+
+                        <div class="col-sm-9">
+                            <p class="form-control-static"
+                               th:text="${#calendars.format(timestamp, @dateUtil.getFullDateFormatWithoutSeconds())}"/>
+                        </div>
+                    </div>
+                </th:block>
+
+                <th:block th:if="${status}">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Response code</label>
+
+                        <div class="col-sm-9">
+                            <p class="form-control-static" th:text="${status}"/>
+                            <th:block th:if="${error}">
+                                (<span th:text="${error}"/>)
+                            </th:block>
+                        </div>
+                    </div>
+                </th:block>
+
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Error code</label>
+
+                    <div class="col-sm-9">
+                        <th:block th:if="${errorCode != null}">
+                            <p class="form-control-static" th:text="${errorCode}"/>
+                        </th:block>
+                        <th:block th:if="${errorCode == null}">
+                            <p class="form-control-static">Not information</p>
+                        </th:block>
+                    </div>
+                </div>
+
+                <th:block th:if="${errorType}">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Type</label>
+
+                        <div class="col-sm-9">
+                            <p class="form-control-static" th:text="${errorType.text}"/>
+                        </div>
+                    </div>
+                </th:block>
+
+            </div>
+
+            <th:block th:if="${@applicationProperties.isTestserver()}">
+
+                <div class="form-horizontal">
+                    <th:block th:if="${currentUser != null}">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Roles user</label>
+
+                            <div class="col-sm-9">
+                                <ul class="list-group">
+                                    <li class="list-group-item" th:each="role : ${currentUser.roles}">
+                                        <span th:utext="${role}"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </th:block>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Error log</label>
+
+                        <div class="col-sm-9">
+                            <div>
+                                <a class="btn btn-link btn-compact collapsed" role="button" data-toggle="collapse"
+                                   href="#code2"
+                                   aria-expanded="false"
+                                   aria-controls="code2">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>
+                                    <span class="glyphicon glyphicon-triangle-bottom"></span>
+                                    show
+                                </a>
+
+                                <div class="line">
+                                </div>
+                            </div>
+
+                            <div id="code2" class="collapse well well-sm code-block">
+                                <code>
+                                    <th:block th:each="exc : ${exceptions}">
+                                        <th:block th:utext="${exc.message}"/>
+                                        <th:block th:each="ste : ${exc.stackTrace}">
+                                            <br/>
+                                            <th:block th:utext="'--->' + ${ste}"/>
+                                        </th:block>
+                                        <br/><br/>
+                                    </th:block>
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </th:block>
+        </div>
+    </div>
+</div>
+</body>
+</html>

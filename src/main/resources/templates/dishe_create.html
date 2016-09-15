@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="fragments/headTag :: headTag"/>
+
+<body>
+<div th:include="fragments/bodyNav :: bodyNav">
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <h2>Creating Dishe</h2>
+            <hr/>
+            <form id="createDishe" th:action="@{/dishe/create}" th:object="${form}" method="post" class="form-horizontal safetyData" role="form">
+                <div class="form-group">
+                    <label for="input1" class="col-sm-3 control-label">Full name</label>
+
+                    <div class="col-sm-9">
+                        <textarea id="input1" name="name" class="form-control resizeVer" th:field="*{name}"
+                               required="required"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="select2" class="col-sm-3 control-label">Price</label>
+
+                    <div class="col-sm-9">
+                        <select id="select2" name="price" class="form-control">
+                    </select></div>
+                </div>
+                <div class="form-group">
+                        <label for="select4" class="col-sm-3 control-label">Restaurant</label>
+
+                        <div class="col-sm-9">
+                        <select id="select4" name="restaurant" class="form-control">
+                        <th:block
+                                th:each="restaurant : ${restaurants}">
+                            <option th:value="${restaurant.id}" th:text="${restaurant.name}"/>
+                        </th:block>
+                    </select></div>
+                </div>
+                <div class="form-group">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input type="submit" name="register-submit" id="register-submit" class="btn btn-primary"
+                                   value="Create"/>
+                        </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
