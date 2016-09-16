@@ -1,6 +1,7 @@
 package com.shorterurl.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import com.shorterurl.domain.RegisterUrl;
@@ -27,9 +28,9 @@ public interface StatisticService {
      * Get full statistic by logonName
      * 
      * @param accountId
-     * @return list with statistic
+     * @return Map with statistic
      */
-    List<String> findByLogonName(String logonName);
+    Map<String, Integer> findByLogonName(String logonName);
 
     /**
      *

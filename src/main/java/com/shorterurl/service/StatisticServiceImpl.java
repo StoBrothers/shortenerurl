@@ -1,6 +1,7 @@
 package com.shorterurl.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -23,11 +24,11 @@ public class StatisticServiceImpl implements StatisticService {
     @Autowired
     RegisterService registerservice;
 
-    @Override
-    public List<String> findByLogonName(String logonName) {
 
+    public Map<String, Integer> findByLogonName(String logonName) {
         List<Statistic> statistics = statisticRepository.findByLogonName(logonName);
-        return statistics.stream().map(p -> p.toString()).collect(Collectors.toList());
+        return  statistics.stream().collect(Collectors.toMap(p -> p.getRegisterUrl().getFullUrl(),
+            p->p.getCountRedirects()));
     }
 
     @Override
