@@ -25,8 +25,7 @@ public class ApplicationProperties {
     private static String buildVersion;
     private static String buildDate;
 
-    private static int plusHour;
-    private static int minusHour;
+    private static String serverHeader;
 
     private ApplicationProperties() {
     }
@@ -62,14 +61,9 @@ public class ApplicationProperties {
             .format(zdt.plusSeconds(zdt.getOffset().getTotalSeconds()));
     }
 
-    @Value("${shorterurl.votetime.plushour}")
-    private void setPlusHour(int plushour) {
-        ApplicationProperties.plusHour = plushour;
-    }
-
-    @Value("${shorterurl.votetime.minushour}")
-    private void setMinusHour(int minushour) {
-        ApplicationProperties.minusHour = minushour;
+    @Value("${shorterurl.server.header}")
+    private void setServerHeader(String serverHeader) {
+        ApplicationProperties.serverHeader = serverHeader;
     }
 
     public static boolean isTestserver() {
@@ -104,12 +98,7 @@ public class ApplicationProperties {
         return buildDate;
     }
 
-    public static int getPlusHour() {
-        return plusHour;
+    public static String getServerHeader() {
+        return serverHeader;
     }
-
-    public static int getMinusHour() {
-        return minusHour;
-    }
-
 }

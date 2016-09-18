@@ -12,8 +12,6 @@ import java.util.List;
 public enum Permission {
 
     // @formatter:off
-    VOTES_CREATE,
-    VOTES_INFO,
     CABINET_ADMIN,
     REF_ADMINS_VIEW,
     EDIT_SETTINGS,
@@ -27,7 +25,7 @@ public enum Permission {
 
     public static final List<Permission> APP_COMMON = Collections
         .unmodifiableList(Arrays.asList(
-            VOTES_INFO
+            REF_ACCOUNTS_VIEW
          ));
     // @formatter:on
 

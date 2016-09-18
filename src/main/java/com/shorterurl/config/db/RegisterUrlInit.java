@@ -9,7 +9,7 @@ import com.shorterurl.domain.RegisterUrlRepository;
 import com.shorterurl.service.RegisterService;
 
 /**
- * Initialization and registration short url (shorturl) for www.ya.ru.
+ * Initialization and registration short url (shorturl) for some sites www.ya.ru.
  *
  * @author Sergey Stotskiy
  *
@@ -27,8 +27,8 @@ public class RegisterUrlInit extends AbstractInit {
     @Override
     protected void init() {
         create("www.ya.ru", "shorturl_1", 301);
-        create("www.index.ru", "shortur_2", 301);
-        create("www.mail.ru", "shortur_3", 302);
+        create("www.index.ru", "shorturl_2", 301);
+        create("www.mail.ru", "shorturl_3", 302);
     }
 
     /**

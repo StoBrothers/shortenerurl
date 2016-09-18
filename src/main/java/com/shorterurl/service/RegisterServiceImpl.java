@@ -84,15 +84,4 @@ public class RegisterServiceImpl implements RegisterService {
         return registerRepository.findOneByShortUrl(shortUrl);
     }
 
-    @Override
-    public String getHeaderUrl() {
-        // TODO Auto-generated method stub
-        return "http://localhost:8080/shorturl/";
-    }
-
-    @Override
-    public Optional<RegisterUrl> save(RegisterUrl register) {
-        return Optional.ofNullable(registerRepository.save(register));
-    }
-
 }

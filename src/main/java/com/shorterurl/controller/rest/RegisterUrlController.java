@@ -3,8 +3,6 @@ package com.shorterurl.controller.rest;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shorterurl.domain.RegisterParameter;
 import com.shorterurl.domain.RegisterUrl;
 import com.shorterurl.service.RegisterService;
+import com.shorterurl.util.ApplicationProperties;
 
 /**
  * New short url registration.
@@ -31,8 +30,7 @@ public class RegisterUrlController {
     @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = {
         "application/json" }, produces = { "application/json" })
     @Transactional
-    public Object registration(@RequestBody RegisterParameter parameter,
-        HttpServletRequest request) {
+    public Object registration(@RequestBody RegisterParameter parameter) {
 
         RegisterUrl registeredUrl = registerService.registerUrl(parameter.getUrl(),
             parameter.getRedirectType());
@@ -41,10 +39,11 @@ public class RegisterUrlController {
         }
 
         Map<String, String> response = new HashMap<>();
-        // request.get
+        
+        
 
         response.put("shortUrl",
-            registerService.getHeaderUrl() + registeredUrl.getShortUrl());
+            ApplicationProperties.getServerHeader() + registeredUrl.getShortUrl());
 
         return response;
     }

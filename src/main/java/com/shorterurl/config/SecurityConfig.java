@@ -48,16 +48,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/statistic/**").permitAll()
                 .antMatchers("/user/**")
                     .hasAuthority(Permission.CABINET_ADMIN.name())
-                .antMatchers("/references/admins/")
+                .antMatchers("/references/admins/") 
                     .hasAuthority(Permission.REF_ADMINS_VIEW.name())
                 .antMatchers("/admin/settings/**")
                     .hasAuthority(Permission.EDIT_SETTINGS.name())
                 .antMatchers("/references/")
                     .hasAuthority(Permission.REF_MENU.name())
-//                .and()
-//                    .authorizeRequests()
-//                    .antMatchers("/statistic/**") // use short links for anonymous access
-//                    .anonymous()
                 .and()
                     .authorizeRequests()
                     .antMatchers("/account/") // registration for anonymous access

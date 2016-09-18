@@ -18,8 +18,6 @@ public enum Role {
 
     // @formatter:off
     ADMIN("Admin", "Admin", Arrays.asList(
-        Permission.VOTES_INFO,
-        Permission.VOTES_CREATE,
         Permission.CABINET_ADMIN
 
     )),
@@ -28,7 +26,6 @@ public enum Role {
         Stream.concat(
             Permission.APP_COMMON.stream(),
             Arrays.asList(
-                Permission.VOTES_CREATE,
                 Permission.REF_MENU
             ).stream())
         .collect(Collectors.toList()));
